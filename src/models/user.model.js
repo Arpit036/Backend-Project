@@ -62,4 +62,38 @@ userSchema.pre("save",async function(next) {
     next()
 })
 
+userSchema.methods.isPaddwordCorrect = async function (password){
+  return await bcrypt.compare(password, this.password)
+}
+
+userSchema.methods.generateAccessToken = fucntion(){
+    return jwt.sign(
+        {
+            _id: this._id,
+            email: this.email,
+            username : this.username,
+            fullname: this.fullname
+        },
+        process.env.ACCESS_TOKEN_SECRET,
+        {
+            expiresIN : process.env.ACCESS_TOKEN_EXPIRY
+        }
+    )
+}
+userSchema.methods.generateAccessToken = fucntion(){
+    return jwt.sign(
+        {
+            _id: this._id,
+            email: this.email,
+            username : this.username,
+            fullname: this.fullname
+        },
+        process.env.REFRESH_TOKEN_SECRET,
+        {
+            expiresIN : process.env.REFRESH_TOKEN_EXPIRY
+        }
+    )
+}
+userSchema.methods.generateRefreshToken = fucntion(){}
+
 export const User = mongoose.mmodel("User", userSchema)
