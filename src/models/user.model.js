@@ -66,7 +66,7 @@ userSchema.methods.isPaddwordCorrect = async function (password){
   return await bcrypt.compare(password, this.password)
 }
 
-userSchema.methods.generateAccessToken = fucntion(){
+userSchema.methods.generateAccessToken = function(){
     return jwt.sign(
         {
             _id: this._id,
@@ -80,7 +80,7 @@ userSchema.methods.generateAccessToken = fucntion(){
         }
     )
 }
-userSchema.methods.generateAccessToken = fucntion(){
+userSchema.methods.generateAccessToken = function(){
     return jwt.sign(
         {
             _id: this._id,
@@ -94,6 +94,6 @@ userSchema.methods.generateAccessToken = fucntion(){
         }
     )
 }
-userSchema.methods.generateRefreshToken = fucntion(){}
+userSchema.methods.generateRefreshToken = function(){}
 
 export const User = mongoose.mmodel("User", userSchema)
