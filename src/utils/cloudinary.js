@@ -18,6 +18,7 @@ cloudinary.config({
         })
         console.log("file has been uploaded on cloudy successfully",
         response.url);
+        fs.unlinkSync(LocalFilePath)
         return response;
     }catch (error){
           fs.unlinkSync(LocalFilePath) // remove the locally saved temporary files as the upload operation got failed

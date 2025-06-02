@@ -8,7 +8,7 @@ import connectDB from "./db";
 
 
 dotenv.config({
-    psth: './env'
+    psth: './.env'
 })
 
 connectDB()
